@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'BreadcrumbModuleRoutingMap' => 'Routing Map',
+    'BreadcrumbModuleRoutingMap' => 'Call Routing Map',
     'SubHeaderModuleRoutingMap' => 'Interactive visualization of incoming and outgoing call routing',
-    'module_routing_map' => 'Routing Map',
+    'module_routing_map' => 'Call Routing Map',
     'module_routing_map_description' => 'Read-only React Flow diagram of incoming and outgoing call paths built from current MikoPBX configuration',
 
     'module_routing_map_Disclaimer' => 'This diagram is built from UI configuration only. Custom dialplan files, module hooks and generated contexts may not appear. For complex setups verify via Asterisk CLI.',
-    'module_routing_map_PageTitle' => 'Call routing map',
+    'module_routing_map_PageTitle' => 'Call Routing Map',
     'module_routing_map_PageSubtitle' => 'Auto-generated from providers, incoming/outgoing routes, IVRs and queues',
     'module_routing_map_TabIncoming' => 'Incoming',
     'module_routing_map_TabOutgoing' => 'Outgoing',
@@ -24,7 +24,7 @@ return [
     'module_routing_map_NodeConference' => 'Conference',
     'module_routing_map_NodeApplication' => 'Application',
 
-    'rest_tag_ModuleRoutingMapGraph' => 'Module Routing Map - Graph',
+    'rest_tag_ModuleRoutingMapGraph' => 'Call Routing Map - Graph',
     'rest_routing_map_GetIncoming' => 'Get incoming routing graph',
     'rest_routing_map_GetIncomingDesc' => 'Returns the directed graph of the incoming call routing (providers → routes → time conditions → IVR/queues/extensions) as { nodes, edges }',
     'rest_routing_map_GetOutgoing' => 'Get outgoing routing graph',
