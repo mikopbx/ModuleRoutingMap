@@ -6,7 +6,7 @@
 
 Interactive read-only diagram of incoming and outgoing call paths for MikoPBX, rendered with [React Flow](https://reactflow.dev/). Providers, DID routes, time conditions, IVR menus, queues and extensions are auto-collected from the current PBX configuration and laid out as a clickable graph — so an admin can audit a complex dialplan in seconds instead of clicking through six configuration pages.
 
-![Routing Map — incoming tab](docs/IncomingExample.png)
+![Call Routing Map — overview](docs/RouteMap.png)
 
 ## Why Routing Map
 
