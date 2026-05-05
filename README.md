@@ -2,11 +2,11 @@
 
 [English](README.md) | [Русский](README.ru.md)
 
-# ModuleRoutingMap
+# ModuleRoutingMap — Call Routing Map
 
 Interactive read-only diagram of incoming and outgoing call paths for MikoPBX, rendered with [React Flow](https://reactflow.dev/). Providers, DID routes, time conditions, IVR menus, queues and extensions are auto-collected from the current PBX configuration and laid out as a clickable graph — so an admin can audit a complex dialplan in seconds instead of clicking through six configuration pages.
 
-![Routing Map — incoming tab](docs/images/routing-map.en.png)
+![Routing Map — incoming tab](docs/IncomingExample.png)
 
 ## Why Routing Map
 
@@ -32,11 +32,11 @@ Interactive read-only diagram of incoming and outgoing call paths for MikoPBX, r
 
 ### Incoming — providers, DIDs, time conditions, destinations
 
-![Incoming routing tab](docs/images/routing-map-incoming.en.png)
+![Incoming routing tab](docs/IncomingExample.png)
 
 ### Outgoing — patterns and providers
 
-![Outgoing routing tab](docs/images/routing-map-outgoing.en.png)
+![Outgoing routing tab](docs/OutgoingExample.png)
 
 ## Installation
 
