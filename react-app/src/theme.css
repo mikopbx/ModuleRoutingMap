@@ -1,0 +1,316 @@
+.routing-map-react-root {
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, "Lato", sans-serif;
+  color: #1b1c1d;
+  position: relative;
+}
+
+.routing-map-react-root .react-flow__node {
+  cursor: pointer;
+}
+
+.routing-map-react-root .react-flow__controls {
+  bottom: 12px;
+  left: 12px;
+}
+
+.routing-map-react-root .react-flow__minimap {
+  bottom: 12px;
+  right: 12px;
+  border-radius: 4px;
+  border: 1px solid #e1e4e8;
+}
+
+/* Fullscreen toggle — mirrors SystemDiagnostic's .fullscreen-toggle-btn, with
+   a circular chip background so it stays readable over the graph canvas. */
+.routing-map-react-root .routing-map-fullscreen-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #c0c4c8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  color: #1b1c1d;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.routing-map-react-root .routing-map-fullscreen-btn:hover {
+  background: #2185d0;
+  color: #ffffff;
+  border-color: #1a73c7;
+}
+
+.routing-map-react-root .routing-map-fullscreen-btn i.icon {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* When a container is in fullscreen, the browser gives it a black background
+   by default — override so the canvas keeps its light theme. */
+.routing-map-canvas:fullscreen {
+  background: #fafbfc;
+  padding: 0;
+}
+
+.routing-map-canvas:fullscreen .routing-map-react-root {
+  height: 100vh;
+}
+
+/* Collapse toggle button — anchored top-right of each node */
+.routing-map-node {
+  position: relative;
+}
+
+.routing-map-node .routing-map-node-toggle {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #c0c4c8;
+  background: #ffffff;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  z-index: 5;
+}
+
+.routing-map-node .routing-map-node-toggle:hover {
+  background: #2185d0;
+  border-color: #1a73c7;
+  color: #ffffff;
+}
+
+.routing-map-node.routing-map-node-collapsed {
+  opacity: 0.85;
+  border-style: dashed;
+}
+
+.routing-map-node .routing-map-node-hidden-badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 1px 6px;
+  font-size: 10px;
+  font-weight: 600;
+  background: #fff3cd;
+  color: #6a4b00;
+  border-radius: 10px;
+}
+
+/* Global time policy pivot — inline rule list */
+.routing-map-node.routing-map-node-schedule-pivot {
+  min-width: 220px;
+  max-width: 280px;
+}
+
+.routing-map-node.routing-map-node-schedule-pivot .routing-map-node-rule-list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+  font-size: 11px;
+  color: #555;
+}
+
+.routing-map-node.routing-map-node-schedule-pivot .routing-map-node-rule-list li {
+  padding: 1px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.routing-map-node.routing-map-node-schedule-pivot .routing-map-node-rule-list li:first-child {
+  border-top: none;
+}
+
+.routing-map-node.routing-map-node-schedule-pivot .routing-map-node-rule-more {
+  color: #999;
+  font-style: italic;
+}
+
+/* IVR menu — compact inline option list. Each digit lives next to its target
+   label so the whole menu is readable without expanding the subtree; edges
+   still exist to the real graph nodes so the flow stays traceable. */
+.routing-map-node.routing-map-node-ivr-menu {
+  min-width: 240px;
+  max-width: 320px;
+}
+
+.routing-map-node .routing-map-ivr-options {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.routing-map-node .routing-map-ivr-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+  font-size: 11px;
+  color: #333;
+  border-top: 1px solid rgba(100, 53, 201, 0.1);
+}
+
+.routing-map-node .routing-map-ivr-option:first-child {
+  border-top: none;
+}
+
+.routing-map-node .routing-map-ivr-digit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  border-radius: 11px;
+  background: #6435c9;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.routing-map-node .routing-map-ivr-digit-timeout {
+  background: #f2711c;
+}
+
+.routing-map-node .routing-map-ivr-digit-timeout i.icon {
+  margin: 0;
+  font-size: 12px;
+}
+
+.routing-map-node .routing-map-ivr-option i.icon {
+  margin: 0;
+  font-size: 12px;
+  color: #6435c9;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+.routing-map-node .routing-map-ivr-option-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.routing-map-node .routing-map-ivr-option-timeout {
+  border-top: 1px dashed rgba(242, 113, 28, 0.35);
+  padding-top: 4px;
+  margin-top: 2px;
+  color: #8a3b04;
+}
+
+/* Priority dispatcher — sits between a provider and its routes. The dashed
+   border visually separates it from real "configurable" nodes (it's purely
+   semantic) without being too loud. */
+.routing-map-node.routing-map-node-dispatcher {
+  border-color: #4a90e2;
+  background: #f0f6ff;
+  border-style: dashed;
+}
+
+.routing-map-node.routing-map-node-dispatcher .routing-map-node-icon {
+  color: #4a90e2;
+  opacity: 1;
+}
+
+/* System sinks: hangup / busy / voicemail / did2user share the generic
+   Application frame but get distinct accent colors so they read differently
+   from regular dialplan applications. */
+.routing-map-node.routing-map-node-sink-hangup {
+  border-color: #db2828;
+  background: #fdecea;
+}
+
+.routing-map-node.routing-map-node-sink-hangup .routing-map-node-icon {
+  color: #db2828;
+  opacity: 1;
+}
+
+.routing-map-node.routing-map-node-sink-busy {
+  border-color: #f2711c;
+  background: #fdf1e4;
+}
+
+.routing-map-node.routing-map-node-sink-busy .routing-map-node-icon {
+  color: #f2711c;
+  opacity: 1;
+}
+
+.routing-map-node.routing-map-node-sink-voicemail {
+  border-color: #2185d0;
+  background: #eaf4fc;
+}
+
+.routing-map-node.routing-map-node-sink-voicemail .routing-map-node-icon {
+  color: #2185d0;
+  opacity: 1;
+}
+
+.routing-map-node.routing-map-node-sink-did2user {
+  border-color: #6435c9;
+  background: #f2ecfb;
+}
+
+.routing-map-node.routing-map-node-sink-did2user .routing-map-node-icon {
+  color: #6435c9;
+  opacity: 1;
+}
+
+/* Disabled provider: muted colors so it visually recedes. The node is still
+   clickable (href preserved) and its subtree is just collapse-by-default. */
+.routing-map-node.routing-map-node-provider-disabled {
+  border-color: #b5b9bd;
+  background: #f4f5f6;
+  color: #8a8f94;
+}
+
+.routing-map-node.routing-map-node-provider-disabled .routing-map-node-label {
+  color: #8a8f94;
+  text-decoration: line-through;
+}
+
+.routing-map-node.routing-map-node-provider-disabled .routing-map-node-icon {
+  opacity: 0.5;
+}
+
+/* Focus mode — Dim / Collapse / focused highlight.
+   Dim applies via className so the graph layout stays intact; filtering would
+   trigger a dagre relayout and destroy the "preserve overview" property we
+   want the Dim state to have. */
+.routing-map-node.routing-map-node-dimmed {
+  opacity: 0.22;
+  transition: opacity 0.15s ease;
+}
+
+.routing-map-react-root .react-flow__edge.routing-map-edge-dimmed {
+  opacity: 0.18;
+  transition: opacity 0.15s ease;
+}
+
+.routing-map-node.routing-map-node-focused {
+  box-shadow: 0 0 0 3px rgba(33, 133, 208, 0.45),
+    0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.15s ease;
+}

@@ -1,0 +1,165 @@
+.routing-map-page .routing-map-canvas {
+    position: relative;
+    width: 100%;
+    height: 640px;
+    background-color: #fafbfc;
+    border: 1px solid #e0e1e2;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* When the canvas enters the browser's native fullscreen, free it from the
+   fixed 640px height and occupy the entire viewport. */
+.routing-map-page .routing-map-canvas:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+}
+
+.routing-map-page .routing-map-canvas .ui.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.routing-map-page .routing-map-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75em;
+}
+
+.routing-map-page .routing-map-legend {
+    margin-top: 1em;
+}
+
+.routing-map-page .routing-map-legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75em 1.25em;
+}
+
+.routing-map-page .routing-map-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.routing-map-page .routing-map-legend-item i.icon {
+    margin-right: 0.15em;
+}
+
+.routing-map-page .routing-map-status {
+    font-weight: normal;
+}
+
+/* React Flow node base styling — individual types override these */
+.routing-map-node {
+    font-family: inherit;
+    font-size: 12px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: #ffffff;
+    border: 1px solid #c9ccd0;
+    box-shadow: 0 1px 2px rgba(34, 36, 38, 0.08);
+    min-width: 160px;
+    max-width: 240px;
+}
+
+.routing-map-node .routing-map-node-body {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.routing-map-node .routing-map-node-icon {
+    font-size: 18px;
+    line-height: 1;
+    margin: 0;
+    flex-shrink: 0;
+    color: inherit;
+    opacity: 0.85;
+}
+
+.routing-map-node .routing-map-node-text {
+    min-width: 0;
+    flex: 1;
+}
+
+.routing-map-node .routing-map-node-label {
+    font-weight: 600;
+    color: #1b1c1d;
+    margin-bottom: 2px;
+    word-break: break-word;
+}
+
+.routing-map-node .routing-map-node-meta {
+    color: #767676;
+    font-size: 11px;
+}
+
+.routing-map-node.routing-map-node-provider {
+    border-color: #2185d0;
+    background: #eaf4fc;
+}
+
+.routing-map-node.routing-map-node-dispatcher {
+    border-color: #4a90e2;
+    background: #f0f6ff;
+    border-style: dashed;
+}
+
+.routing-map-node.routing-map-node-route {
+    border-color: #21ba45;
+    background: #eafbe6;
+}
+
+.routing-map-node.routing-map-node-schedule {
+    border-color: #f2711c;
+    background: #fdf1e4;
+}
+
+.routing-map-node.routing-map-node-ivr {
+    border-color: #6435c9;
+    background: #f2ecfb;
+}
+
+.routing-map-node.routing-map-node-queue {
+    border-color: #00b5ad;
+    background: #e2f8f7;
+}
+
+.routing-map-node.routing-map-node-extension {
+    border-color: #a5673f;
+    background: #faf0e6;
+}
+
+.routing-map-node.routing-map-node-conference {
+    border-color: #b5cc18;
+    background: #f6fae0;
+}
+
+.routing-map-node.routing-map-node-application,
+.routing-map-node.routing-map-node-voicemail {
+    border-color: #767676;
+    background: #f2f3f4;
+}
+
+.routing-map-node.routing-map-node-unknown {
+    border-color: #db2828;
+    background: #fdecea;
+    color: #9f3a38;
+}
+
+.routing-map-node a.routing-map-node-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.routing-map-node a.routing-map-node-link:hover .routing-map-node-label {
+    text-decoration: underline;
+}
