@@ -13,4 +13,9 @@ jobs:
     uses: mikopbx/.github-workflows/.github/workflows/extension-publish.yml@master
     with:
       initial_version: "1.0"
+      custom_build_steps: |
+        cd module/react-app
+        npm ci
+        npm run build
+        test -f ../public/assets/js/vendor/react-flow.bundle.js
     secrets: inherit
