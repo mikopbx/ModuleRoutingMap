@@ -31,10 +31,12 @@ Lib/
 Messages/{en,ru}.php                            translations (key 'BreadcrumbModuleRoutingMap')
 Setup/PbxExtensionSetup.php                     overrides addToSidebar() — group 'maintenance', icon 'project diagram'
 public/assets/
+  img/logo.png                                  module logo (512×512 RGBA, marketplace + sidebar)
+  img/logo.svg                                  source SVG used to rasterize logo.png
   css/module-routing-map.css                    page styling
   js/src/module-routing-map-index.js            SOURCE: fetch JSON, unwrap PBXApiResult, call MikoRoutingMap.mount per tab
   js/module-routing-map-index.js                COMPILED (babel airbnb)
-  js/vendor/react-flow.bundle.js                IIFE bundle (~600 KB) — built from react-app/, NOT in git for dev
+  js/vendor/react-flow.bundle.js                IIFE bundle (~455 KB) — built from react-app/ in CI, NOT in git
 react-app/                                      React Flow source (Vite + dagre); not deployed to PBX
   src/nodes/{Provider,Route,Schedule,Ivr,Queue,Extension,Application,Dispatcher,Base}Node.jsx
   src/{App,main}.jsx, layout.js, theme.css
@@ -160,6 +162,13 @@ keys.
 - `.github/workflows/build.yml` — thin wrapper that delegates to the org
   reusable workflow `mikopbx/.github-workflows/.github/workflows/extension-publish.yml@master`
   (`initial_version: "1.0"`).
+- The wrapper passes `custom_build_steps` that run `npm ci && npm run build`
+  inside `react-app/` and then `rm -rf react-app/node_modules`. This produces
+  `public/assets/js/vendor/react-flow.bundle.js` before the archive step packs
+  the zip, and keeps the resulting artifact small (~220 KB instead of ~21 MB
+  with `node_modules` left in). The reusable workflow runs `custom_build_steps`
+  in the runner shell with cwd at `$GITHUB_WORKSPACE`; the module checkout
+  lives at `module/`, hence `cd module/react-app`.
 - `module.json.version` is `%ModuleVersion%` — the workflow substitutes the
   real version derived from the latest release tag.
 - `module.json.release_settings.{publish_release,changelog_enabled,create_github_release}`
